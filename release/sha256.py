@@ -10,12 +10,7 @@ def main(version, outdir):
         outdir / f'sympy-{version}.tar.gz',
         outdir / f'sympy-{version}-py3-none-any.whl',
         outdir / f'sympy-docs-html-{version}.zip',
-      
-
-if __name__ == "__main__":
-    import sys
-    sys.exit(main(*sys.argv[1:]))
-  outdir / f'sympy-docs-pdf-{version}.pdf',
+        outdir / f'sympy-docs-pdf-{version}.pdf',
     ]
     out = check_output(['shasum', '-a', '256'] + build_files)
     out = out.decode('ascii')
@@ -27,3 +22,8 @@ if __name__ == "__main__":
     # Output to file and to screen
     Path(outdir / 'sha256.txt').write_text(out)
     print(out)
+
+
+if __name__ == "__main__":
+    import sys
+    sys.exit(main(*sys.argv[1:]))
